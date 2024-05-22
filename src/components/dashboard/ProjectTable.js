@@ -1,57 +1,6 @@
 import { Card, CardBody, CardTitle, CardSubtitle, Table } from "reactstrap";
-import user1 from "../../assets/images/users/user1.jpg";
-import user4 from "../../assets/images/users/user4.jpg";
-const tableData = [
-  {
-    avatar: user1,
-    waiter: "Hanna Gover",
-    seats: 4,
-    status: "Active",
-    currentStatus: "Occupied",
-    tableId: "#table1",
-  },
-  {
-    avatar: user1,
-    waiter: "Hanna Gover",
-    seats: 6,
-    status: "Inactive",
-    currentStatus: "Free",
-    tableId: "#table2",
-  },
-  {
-    avatar: user1,
-    waiter: "Hanna Gover",
-    seats: 3,
-    status: "Active",
-    currentStatus: "Occupied",
-    tableId: "#table3",
-  },
-  {
-    avatar: user4,
-    waiter: "Peter",
-    seats: 3,
-    status: "Active",
-    currentStatus: "Occupied",
-    tableId: "#table4",
-  },
-  {
-    avatar: user4,
-    waiter: "Peter",
-    seats: 4,
-    status: "Active",
-    currentStatus: "Occupied",
-    tableId: "#table5",
-  },
-  {
-    avatar: user4,
-    waiter: "Peter",
-    seats: 4,
-    status: "Inactive",
-    currentStatus: "Occupied",
-    tableId: "#table5",
-  },
-];
-
+import QRCode from "react-qr-code";
+import { tableData } from "../../utils/tableData";
 const ProjectTables = () => {
   return (
     <div>
@@ -61,7 +10,6 @@ const ProjectTables = () => {
           <CardSubtitle className="mb-2 text-muted" tag="h6">
             Overview of the tables
           </CardSubtitle>
-
           <Table className="no-wrap mt-3 align-middle" responsive borderless>
             <thead>
               <tr>
@@ -70,6 +18,7 @@ const ProjectTables = () => {
                 <th>Status</th>
                 <th>Current Status</th>
                 <th>TableId</th>
+                <th>QR</th>
               </tr>
             </thead>
             <tbody>
@@ -99,6 +48,28 @@ const ProjectTables = () => {
                   </td>
                   <td>{tdata.currentStatus}</td>
                   <td>{tdata.tableId}</td>
+                  {/* qr code */}
+                  <td>
+                    <div
+                      style={{
+                        height: "auto",
+                        margin: "0 auto",
+                        maxWidth: 64,
+                        width: "100%",
+                      }}
+                    >
+                      <QRCode
+                        size={256}
+                        style={{
+                          height: "auto",
+                          maxWidth: "100%",
+                          width: "100%",
+                        }}
+                        value={"https://chat.openai.com/"}
+                        viewBox={`0 0 256 256`}
+                      />
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>
