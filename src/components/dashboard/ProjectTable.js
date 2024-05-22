@@ -1,55 +1,54 @@
 import { Card, CardBody, CardTitle, CardSubtitle, Table } from "reactstrap";
 import user1 from "../../assets/images/users/user1.jpg";
-import user2 from "../../assets/images/users/user2.jpg";
-import user3 from "../../assets/images/users/user3.jpg";
 import user4 from "../../assets/images/users/user4.jpg";
-import user5 from "../../assets/images/users/user5.jpg";
-
 const tableData = [
   {
     avatar: user1,
-    name: "Hanna Gover",
-    email: "hgover@gmail.com",
-    project: "Flexy React",
-    status: "pending",
-    weeks: "35",
-    budget: "95K",
+    waiter: "Hanna Gover",
+    seats: 4,
+    status: "Active",
+    currentStatus: "Occupied",
+    tableId: "#table1",
   },
   {
-    avatar: user2,
-    name: "Hanna Gover",
-    email: "hgover@gmail.com",
-    project: "Lading pro React",
-    status: "done",
-    weeks: "35",
-    budget: "95K",
+    avatar: user1,
+    waiter: "Hanna Gover",
+    seats: 6,
+    status: "Inactive",
+    currentStatus: "Free",
+    tableId: "#table2",
   },
   {
-    avatar: user3,
-    name: "Hanna Gover",
-    email: "hgover@gmail.com",
-    project: "Elite React",
-    status: "holt",
-    weeks: "35",
-    budget: "95K",
+    avatar: user1,
+    waiter: "Hanna Gover",
+    seats: 3,
+    status: "Active",
+    currentStatus: "Occupied",
+    tableId: "#table3",
   },
   {
     avatar: user4,
-    name: "Hanna Gover",
-    email: "hgover@gmail.com",
-    project: "Flexy React",
-    status: "pending",
-    weeks: "35",
-    budget: "95K",
+    waiter: "Peter",
+    seats: 3,
+    status: "Active",
+    currentStatus: "Occupied",
+    tableId: "#table4",
   },
   {
-    avatar: user5,
-    name: "Hanna Gover",
-    email: "hgover@gmail.com",
-    project: "Ample React",
-    status: "done",
-    weeks: "35",
-    budget: "95K",
+    avatar: user4,
+    waiter: "Peter",
+    seats: 4,
+    status: "Active",
+    currentStatus: "Occupied",
+    tableId: "#table5",
+  },
+  {
+    avatar: user4,
+    waiter: "Peter",
+    seats: 4,
+    status: "Inactive",
+    currentStatus: "Occupied",
+    tableId: "#table5",
   },
 ];
 
@@ -58,20 +57,19 @@ const ProjectTables = () => {
     <div>
       <Card>
         <CardBody>
-          <CardTitle tag="h5">Project Listing</CardTitle>
+          <CardTitle tag="h5">Table Listing</CardTitle>
           <CardSubtitle className="mb-2 text-muted" tag="h6">
-            Overview of the projects
+            Overview of the tables
           </CardSubtitle>
 
           <Table className="no-wrap mt-3 align-middle" responsive borderless>
             <thead>
               <tr>
-                <th>Team Lead</th>
-                <th>Project</th>
-
+                <th>Waiter</th>
+                <th>Seats</th>
                 <th>Status</th>
-                <th>Weeks</th>
-                <th>Budget</th>
+                <th>Current Status</th>
+                <th>TableId</th>
               </tr>
             </thead>
             <tbody>
@@ -87,23 +85,20 @@ const ProjectTables = () => {
                         height="45"
                       />
                       <div className="ms-3">
-                        <h6 className="mb-0">{tdata.name}</h6>
-                        <span className="text-muted">{tdata.email}</span>
+                        <h6 className="mb-0">{tdata.waiter}</h6>
                       </div>
                     </div>
                   </td>
-                  <td>{tdata.project}</td>
+                  <td>{tdata.seats}</td>
                   <td>
-                    {tdata.status === "pending" ? (
+                    {tdata.status === "Inactive" ? (
                       <span className="p-2 bg-danger rounded-circle d-inline-block ms-3"></span>
-                    ) : tdata.status === "holt" ? (
-                      <span className="p-2 bg-warning rounded-circle d-inline-block ms-3"></span>
                     ) : (
                       <span className="p-2 bg-success rounded-circle d-inline-block ms-3"></span>
                     )}
                   </td>
-                  <td>{tdata.weeks}</td>
-                  <td>{tdata.budget}</td>
+                  <td>{tdata.currentStatus}</td>
+                  <td>{tdata.tableId}</td>
                 </tr>
               ))}
             </tbody>
