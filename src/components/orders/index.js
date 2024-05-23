@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, CardBody, CardTitle, Col, Row, Table } from "reactstrap";
-import OrdersTable from "../../../components/dashboard/OrderTable";
+import OrdersTable from "./OrderTable";
 
 const Orders = () => {
   const [details, setDetails] = useState("");

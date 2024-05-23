@@ -1,6 +1,6 @@
 import { useRoutes } from "react-router-dom";
 import Themeroutes from "./routes/Router";
-import Login from "./views/ui/login/Login";
+import Login from "./views/ui/Login";
 
 const App = () => {
   const routing = useRoutes(Themeroutes);
