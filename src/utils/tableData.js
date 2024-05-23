@@ -47,6 +47,6 @@ export const tableData = [
     seats: 4,
     status: "Inactive",
     currentStatus: "Occupied",
-    tableId: "#table5",
+    tableId: "#table6",
   },
 ];
