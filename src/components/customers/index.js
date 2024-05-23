@@ -21,34 +21,33 @@ const Customers = () => {
           <Card>
             <CardTitle tag="h6" className="border-bottom p-3 mb-0">
               <i className="bi bi-bell me-2"> </i>
-              Order Details
-            </CardTitle>
-            <CardTitle tag="h6" className="border-bottom p-3 mb-0">
-              Order ID: {details.orderId}
+              Customer Details
             </CardTitle>
             <CardBody>
               <Table className="no-wrap align-middle" responsive borderless>
                 <thead>
                   <tr>
-                    <th>Item</th>
-                    <th>Price</th>
+                    <th>OrderID</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <td>Meals</td>
                   </tr>
                 </thead>
                 <tbody>
-                  {details.items.map((item, index) => (
+                  {details.map((item, index) => (
                     <tr key={index} className="border-top">
-                      <td>{item.item}</td>
-                      <td>{item.price}</td>
+                      <td>{item.order_id}</td>
+                      <td>{item.order_date}</td>
+                      <td>{item.total_amount}</td>
+                      <td>
+                        {item.order_details.map(
+                          (meal, index) => meal.item + ","
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </Table>
-              <p className="text-right text-end inline-block">
-                Total:{" "}
-                <strong>
-                  {details.items.reduce((total, item) => total + item.price, 0)}
-                </strong>
-              </p>
               <div className="text-center">
                 <Button
                   className="btn"

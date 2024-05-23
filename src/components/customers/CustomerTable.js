@@ -1,8 +1,8 @@
 import { Button, Table } from "reactstrap";
 import { customerData } from "../../utils/customerData";
 const OrdersTable = ({ setDetails }) => {
-  const handleDetails = (order) => {
-    setDetails({ orderId: order.id, items: order.details });
+  const handleDetails = (history) => {
+    setDetails(history);
   };
   return (
     <Table className="no-wrap align-middle" responsive borderless>
@@ -27,7 +27,7 @@ const OrdersTable = ({ setDetails }) => {
                 className="btn"
                 color="primary"
                 size="sm"
-                // onClick={() => handleDetails(order)}
+                onClick={() => handleDetails(customer.history)}
               >
                 Details
               </Button>
