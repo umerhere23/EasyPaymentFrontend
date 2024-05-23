@@ -1,6 +1,9 @@
 import { Button, Table } from "reactstrap";
 import { orderData } from "../../utils/orderData";
-const OrdersTable = () => {
+const OrdersTable = ({ setDetails }) => {
+  const handleDetails = (order) => {
+    setDetails({ orderId: order.id, items: order.details });
+  };
   return (
     <Table className="no-wrap align-middle" responsive borderless>
       <thead>
@@ -26,7 +29,12 @@ const OrdersTable = () => {
               )}
             </td>
             <div className="button-group" style={{ background: "transparent" }}>
-              <Button className="btn" color="primary" size="sm">
+              <Button
+                className="btn"
+                color="primary"
+                size="sm"
+                onClick={() => handleDetails(order)}
+              >
                 Details
               </Button>
             </div>
