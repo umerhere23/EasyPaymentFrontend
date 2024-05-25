@@ -1,7 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, CardBody, CardTitle, Col, Row, Table } from "reactstrap";
 import CustomerTable from "./CustomerTable";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllCustomers } from "./actions";
 const Customers = () => {
+  const dispatch = useDispatch();
+  const { customers } = useSelector((state) => state.customerSlice);
+  useEffect(() => {
+    if (customers.length === 0) {
+      dispatch(getAllCustomers());
+    }
+  }, []);
   const [details, setDetails] = useState("");
   return (
     <Row>
