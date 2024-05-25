@@ -16,6 +16,7 @@ const Breadcrumbs = lazy(() => import("../views/ui/Breadcrumbs"));
 const Login = lazy(() => import("../views/ui/Login"));
 const Orders = lazy(() => import("../views/ui/Orders"));
 const Customers = lazy(() => import("../views/ui/Customers.js"));
+const AddTable = lazy(() => import("../views/ui/AddTable.js"));
 
 /*****Routes******/
 
@@ -38,6 +39,7 @@ const ThemeRoutes = [
       { path: "/login", exact: true, element: <Login /> },
       { path: "/orders", exact: true, element: <Orders /> },
       { path: "/customers", exact: true, element: <Customers /> },
+      { path: "/add-table", exact: true, element: <AddTable /> },
     ],
   },
 ];

@@ -1,4 +1,13 @@
-import { Card, CardBody, CardTitle, CardSubtitle, Table } from "reactstrap";
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  Table,
+  Col,
+  Button,
+  Row,
+} from "reactstrap";
 import QRCode from "react-qr-code";
 import { tableData } from "../../utils/tableData";
 const ProjectTables = () => {
@@ -6,10 +15,17 @@ const ProjectTables = () => {
     <div>
       <Card>
         <CardBody>
-          <CardTitle tag="h5">Table Listing</CardTitle>
-          <CardSubtitle className="mb-2 text-muted" tag="h6">
-            Overview of the tables
-          </CardSubtitle>
+          <Row>
+            <Col lg={6}>
+              <CardTitle tag="h5">Table Listing</CardTitle>
+              <CardSubtitle className="mb-2 text-muted" tag="h6">
+                Overview of the tables
+              </CardSubtitle>
+            </Col>
+            <Col lg={6} className="text-end">
+              <Button color="primary">Add Table</Button>
+            </Col>
+          </Row>
           <Table className="no-wrap mt-3 align-middle" responsive borderless>
             <thead>
               <tr>
