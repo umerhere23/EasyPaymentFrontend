@@ -9,8 +9,10 @@ import {
   Row,
 } from "reactstrap";
 import QRCode from "react-qr-code";
+import { useNavigate } from "react-router-dom";
 import { tableData } from "../../utils/tableData";
 const ProjectTables = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <Card>
@@ -23,7 +25,9 @@ const ProjectTables = () => {
               </CardSubtitle>
             </Col>
             <Col lg={6} className="text-end">
-              <Button color="primary">Add Table</Button>
+              <Button color="primary" onClick={() => navigate("/add-table")}>
+                Add Table
+              </Button>
             </Col>
           </Row>
           <Table className="no-wrap mt-3 align-middle" responsive borderless>

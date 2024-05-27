@@ -2,19 +2,23 @@ import {
   Card,
   CardBody,
   CardTitle,
-  CardSubtitle,
-  Table,
   Col,
   Button,
-  Row,
   Form,
   FormGroup,
   Label,
   Input,
 } from "reactstrap";
-import QRCode from "react-qr-code";
-import { tableData } from "../../utils/tableData";
+import { useState } from "react";
 const AddTables = () => {
+  const [formData, setFormData] = useState({ name: "", status: "Active" });
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
   return (
     <div>
       <Card>
@@ -22,8 +26,8 @@ const AddTables = () => {
           <CardTitle className="text-center">Add a new table</CardTitle>
           <section className="w-100" style={{ padding: "0 1rem" }}>
             <Col lg={6} className="mx-auto">
-              <Form>
-                <FormGroup>
+              <Form onSubmit={handleSubmit}>
+                {/* <FormGroup>
                   <Label for="exampleSelect">Select Waiter</Label>
                   <Input id="exampleSelect" name="select" type="select">
                     <option>Alice</option>
@@ -31,17 +35,18 @@ const AddTables = () => {
                     <option>Susan</option>
                     <option>Martin</option>
                   </Input>
-                </FormGroup>
+                </FormGroup> */}
                 <FormGroup>
-                  <Label for="examplePassword">No. of seats</Label>
+                  <Label for="name">Table Name</Label>
                   <Input
-                    id="examplePassword"
-                    name="password"
-                    placeholder="Enter no. of seats"
-                    type="number"
+                    id="name"
+                    name="name"
+                    placeholder="Enter table name"
+                    type="text"
+                    onChange={(e) => handleChange(e)}
                   />
                 </FormGroup>
-                <FormGroup>
+                {/* <FormGroup>
                   <Label for="examplePassword">Table ID</Label>
                   <Input
                     id="examplePassword"
@@ -49,21 +54,21 @@ const AddTables = () => {
                     placeholder="Enter table id"
                     type="string"
                   />
-                </FormGroup>
+                </FormGroup> */}
                 <FormGroup>
-                  <Label for="exampleSelect">Table status</Label>
-                  <Input id="exampleSelect" name="select" type="select">
-                    <option>Active</option>
-                    <option>Inactive</option>
+                  <Label for="status">Table status</Label>
+                  <Input
+                    id="status"
+                    name="status"
+                    type="select"
+                    onChange={(e) => handleChange(e)}
+                  >
+                    <option value={"active"}>Active</option>
+                    <option value={"inactive"}>Inactive</option>
                   </Input>
                 </FormGroup>
                 <div className="text-center">
-                  <Button
-                    color="primary"
-                    onClick={() => {
-                      alert("Table will be added");
-                    }}
-                  >
+                  <Button type="submit" color="primary">
                     Submit
                   </Button>
                 </div>
