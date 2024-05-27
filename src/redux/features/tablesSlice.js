@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addTable } from "../../components/dashboard/actions";
+import { addTable, getTables } from "../../components/dashboard/actions";
 const initialState = {
   loading: false,
   error: null,
-  tables: "",
+  tables: null,
 };
 const tableSlice = createSlice({
   name: "tableSlice",
@@ -20,6 +20,17 @@ const tableSlice = createSlice({
       .addCase(addTable.rejected, (state, action) => {
         state.error = action.payload;
         state.loading = false;
+      })
+      .addCase(getTables.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(getTables.fulfilled, (state, action) => {
+        state.loading = false;
+        state.tables = action.payload;
+      })
+      .addCase(getTables.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       });
   },
 });
