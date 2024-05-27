@@ -9,15 +9,26 @@ import {
   Label,
   Input,
 } from "reactstrap";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addTable } from "./actions";
+import toast from "react-hot-toast";
 const AddTables = () => {
-  const [formData, setFormData] = useState({ name: "", status: "Active" });
+  const dispatch = useDispatch();
+  const { error, loading } = useSelector((state) => state.tableReducer);
+  const [formData, setFormData] = useState({ Name: "", status: "Active" });
+  // useEffect for toast error
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    dispatch(addTable(formData));
   };
   return (
     <div>
@@ -37,10 +48,10 @@ const AddTables = () => {
                   </Input>
                 </FormGroup> */}
                 <FormGroup>
-                  <Label for="name">Table Name</Label>
+                  <Label for="Name">Table Name</Label>
                   <Input
-                    id="name"
-                    name="name"
+                    id="Name"
+                    name="Name"
                     placeholder="Enter table name"
                     type="text"
                     onChange={(e) => handleChange(e)}
@@ -69,7 +80,7 @@ const AddTables = () => {
                 </FormGroup>
                 <div className="text-center">
                   <Button type="submit" color="primary">
-                    Submit
+                    {loading ? "Saving..." : "Save"}
                   </Button>
                 </div>
               </Form>
